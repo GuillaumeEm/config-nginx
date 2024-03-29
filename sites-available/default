@@ -1,0 +1,12 @@
+server {
+    listen   80;
+    server_name $hostname 555.555.555.555 ;
+
+    root /data/www/default/;
+    index index.html index.htm;
+
+    location /.well-known/acme-challenge {
+        root /var/www/letsencrypt;
+    }
+    rewrite ^ https://$server_name$request_uri? permanent;
+}
